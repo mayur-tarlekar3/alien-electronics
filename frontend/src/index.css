@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#080808] text-slate-200 font-outfit antialiased selection:bg-cyan-500/20 selection:text-cyan-200;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.2) 0, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(15, 23, 42, 0.2) 0, transparent 50%);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.02] backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)];
+  }
+
+  .btn {
+    @apply font-bold py-3 px-6 rounded-xl transition-all duration-300 active:scale-[0.98] inline-flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider text-[10px];
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-br from-indigo-500 to-cyan-600 text-white font-black py-3.5 px-8 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(34,211,238,0.2)] active:scale-[0.97] inline-flex items-center justify-center uppercase tracking-[0.15em] border border-white/10;
+  }
+
+  .input-group {
+    @apply mb-6;
+  }
+
+  .input-field {
+    @apply w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white outline-none focus:border-cyan-500/50 focus:bg-black/60 transition-all duration-300 placeholder:text-slate-600 caret-white;
+  }
+
+  .input-field:focus {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.05);
+  }
+
+  input:-webkit-autofill {
+    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px #080808 inset !important;
+  }
+
+  select option {
+    background-color: #121212;
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-800 rounded-full hover:bg-cyan-600 transition-colors;
+  }
+}
+
+/* Custom Utilities */
+.text-gradient {
+  @apply bg-gradient-to-r from-indigo-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
