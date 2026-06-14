@@ -19,29 +19,28 @@ public class JavaMailUtil {
 
 		System.out.println("Preparing to send Mail");
 		Properties properties = new Properties();
-		String host = "smtp.gmail.com";
-		properties.put("mail.smtp.host", host);
-		properties.put("mail.transport.protocol", "smtp");
+		properties.put("mail.smtp.host", "smtp-relay.brevo.com");
+		properties.put("mail.smtp.port", "587");
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls.enable", "true");
-		properties.put("mail.smtp.port", "587");
 
 		ResourceBundle rb = ResourceBundle.getBundle("application");
 
 		String envEmail = System.getenv("MAIL_EMAIL");
-		String envPass = System.getenv("MAIL_PASSWORD");
 
 		String emailId = (envEmail != null && !envEmail.trim().isEmpty()) ? envEmail : rb.getString("mailer.email");
-		String passWord = (envPass != null && !envPass.trim().isEmpty()) ? envPass : rb.getString("mailer.password");
-
-		properties.put("mail.user", emailId);
-		properties.put("mail.password", passWord);
+		if (emailId == null || emailId.trim().isEmpty()) {
+			emailId = "aea906001@smtp-brevo.com";
+		}
 
 		Session session = Session.getInstance(properties, new Authenticator() {
 
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(emailId, passWord);
+				return new PasswordAuthentication(
+					"aea906001@smtp-brevo.com",
+					"z2bCKDYv4M0TAxhV"
+				);
 			}
 
 		});
@@ -77,29 +76,28 @@ public class JavaMailUtil {
 
 		System.out.println("Preparing to send Mail");
 		Properties properties = new Properties();
-		String host = "smtp.gmail.com";
-		properties.put("mail.smtp.host", host);
-		properties.put("mail.transport.protocol", "smtp");
+		properties.put("mail.smtp.host", "smtp-relay.brevo.com");
+		properties.put("mail.smtp.port", "587");
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls.enable", "true");
-		properties.put("mail.smtp.port", "587");
 
 		ResourceBundle rb = ResourceBundle.getBundle("application");
 
 		String envEmail = System.getenv("MAIL_EMAIL");
-		String envPass = System.getenv("MAIL_PASSWORD");
 
 		String emailId = (envEmail != null && !envEmail.trim().isEmpty()) ? envEmail : rb.getString("mailer.email");
-		String passWord = (envPass != null && !envPass.trim().isEmpty()) ? envPass : rb.getString("mailer.password");
-
-		properties.put("mail.user", emailId);
-		properties.put("mail.password", passWord);
+		if (emailId == null || emailId.trim().isEmpty()) {
+			emailId = "aea906001@smtp-brevo.com";
+		}
 
 		Session session = Session.getInstance(properties, new Authenticator() {
 
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(emailId, passWord);
+				return new PasswordAuthentication(
+					"aea906001@smtp-brevo.com",
+					"z2bCKDYv4M0TAxhV"
+				);
 			}
 
 		});
